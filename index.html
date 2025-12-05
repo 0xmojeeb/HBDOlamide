@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Usman 🎉</title>
+
+  <style>
+    :root {
+      --yellow-soft: #fff7cc;
+      --yellow-strong: #ffd54a;
+      --blue-main: #4169e1;
+      --blue-deep: #1e3a8a;
+      --text-main: #1f2933;
+      --text-muted: #4b5563;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, var(--yellow-soft), #ffffff);
+      color: var(--text-main);
+      text-align: center;
+    }
+
+    
+
+    header {
+      background-image: url("Asset/images/USM 2.JPG");
+      background-size: cover;
+      background-position: top center;
+      height: clamp(220px, 45vh, 360px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-shadow: 2px 2px 5px #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.6)
+      );
+    }
+
+    header h1 {
+      position: relative;
+      font-size: clamp(2rem, 3.3vw, 3rem);
+      margin: 0;
+      padding: 0 12px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        height: 260px;
+        background-position: center 15%;
+      }
+    }
+
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #ffcc00;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: #0033cc;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 999px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--yellow-strong), var(--blue-main));
+      opacity: 0;
+      transform: translateY(4px);
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: rgba(255, 247, 204, 0.9);
+      color: var(--blue-deep);
+    }
+
+    .tab-btn.active::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    
+
+    .page {
+      padding: 24px 16px 40px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto 26px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 24px 20px 28px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      text-align: left;
+    }
+
+    .container h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 1.5rem;
+      color: var(--blue-deep);
+      text-align: center;
+    }
+
+    .main-photo {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .oriki-photo {
+      max-width: 100%;
+      height: auto;
+      border-radius: 18px;
+      margin-top: 18px;
+      display: block;
+    }
+
+    .message {
+      font-size: 1.02rem;
+      line-height: 1.9;
+      color: var(--text-main);
+      white-space: pre-wrap;
+    }
+
+    .message b {
+      color: var(--blue-deep);
+    }
+
+    .from {
+      margin-top: 20px;
+      font-style: italic;
+      text-align: right;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+  
+
+    .comments-section {
+      margin-top: 28px;
+      border-top: 1px solid rgba(226, 232, 240, 0.9);
+      padding-top: 20px;
+    }
+
+    .comments-section h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: var(--blue-deep);
+      text-align: left;
+    }
+
+    #commentForm {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    #commentForm input,
+    #commentForm textarea {
+      font-family: inherit;
+      font-size: 0.95rem;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      outline: none;
+      resize: vertical;
+    }
+
+    #commentForm input:focus,
+    #commentForm textarea:focus {
+      border-color: var(--blue-main);
+      box-shadow: 0 0 0 1px rgba(65, 105, 225, 0.25);
+    }
+
+    #commentForm button {
+      align-self: flex-start;
+      background: linear-gradient(90deg, var(--blue-main), var(--yellow-strong));
+      border: none;
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(65, 105, 225, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    #commentForm button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(65, 105, 225, 0.45);
+      opacity: 0.96;
+    }
+
+    .comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .comment-card {
+      background: rgba(248, 250, 252, 0.9);
+      border-radius: 14px;
+      padding: 10px 12px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .comment-meta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue-deep);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .comment-text {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      white-space: pre-wrap;
+    }
+
+    .no-comments {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    
+
+    .music-btn {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      background: #0033cc;
+      color: #ffffff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      z-index: 999;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .music-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      opacity: 0.95;
+    }
+
+   
+
+    .premium-link {
+      background: linear-gradient(90deg, var(--yellow-strong), var(--blue-main));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+      text-decoration: none;
+      padding-bottom: 2px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .premium-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--yellow-strong), var(--blue-main));
+      transition: width 0.3s ease;
+      border-radius: 4px;
+    }
+
+    .premium-link:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .premium-link:hover::after {
+      width: 100%;
+    }
+
+    
+
+    .disclaimer {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 20px 16px 22px;
+      }
+
+      .message {
+        font-size: 0.98rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HERO -->
+  <header>
+    <h1>Happy Birthday Olamide! 🎂</h1>
+  </header>
+
+  <!-- MUSIC BUTTON -->
+  <button onclick="toggleMusic()" class="music-btn">
+    🎵 Toggle Music
+  </button>
+
+  <!-- NAV TABS -->
+  <nav>
+    <button class="tab-btn active" data-tab="Wish" onclick="showTab('Wish')">
+      Wish
+    </button>
+    <button class="tab-btn" data-tab="Oriki" onclick="showTab('Oriki')">
+      Oriki
+    </button>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <div class="page">
+    <!-- WISH TAB -->
+    <div class="tab-content active" id="Wish">
+      <div class="container">
+        <img
+          src="Asset/images/USM 3.JPG"
+          alt="Birthday Olamide"
+          class="main-photo"
+        />
+
+        <h2>Happy Birthday, Usman Olamide! 🎉💙</h2>
+
+        <p class="message">
+<b>My dear little brother, Olamide,</b>
+
+Today, we celebrate you the last born of the house,
+the energy controller, the comedian, and the one who 
+brings life into every room.
+
+Watching you grow year after year has been one of the best
+blessings of my life. From your stubborn moments to your 
+smart comebacks, your big dreams and your quiet strengths,
+you’ve grown into someone I’m genuinely proud of.
+
+I pray this new year brings you wisdom, protection,
+and opportunities that match how big your future is.
+Keep becoming the young man God designed you to be.
+
+No matter how tall you grow or how far you go,
+you’ll always be my guy my little bro for life.
+
+<b>Shine this year. Grow. Win. And enjoy your day, Olamide. 🎂💯</b>
+
+<b>I GOT YOU, ALWAYS.</b>
+        </p>
+
+        <p class="from">
+          — <i>Adewale, Ayinde</i>
+          (<a
+            href="https://mojeebfolio.lovable.app"
+            target="_blank"
+            class="premium-link"
+            >Mojeeb.eth</a
+          >)
+          💙
+        </p>
+
+        <!-- COMMENTS SECTION -->
+        <div class="comments-section">
+          <h3>Leave a birthday message for Olamide 🎈</h3>
+          <form id="commentForm">
+            <input
+              type="text"
+              id="nameInput"
+              placeholder="Your name"
+            />
+            <textarea
+              id="messageInput"
+              rows="3"
+              placeholder="Write your birthday wish..."
+              required
+            ></textarea>
+            <button type="submit">Post message</button>
+          </form>
+
+          <div id="commentsList" class="comments-list">
+            <p class="no-comments">Loading messages...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORIKI TAB -->
+    <div class="tab-content" id="Oriki">
+      <div class="container">
+        <img
+          src="Asset/images/USM 4.JPG"
+          alt="Olamide Oriki"
+          class="main-photo"
+        />
+
+        <h2>👑 Oríkì Usman Olamide — Ọmọ Olofa Májó 👑</h2>
+
+        <p class="message">
+Usman Olamide, ọmọ Ìgàbyn,
+ọmọ Olofa má jó,
+tí kò mọ̀ọ́ká síbi tí kì í dára.
+
+Ọmọ ará Odo-Ọtìn,
+tí inú rere ẹni kàn tó bí i ni kì í tā.
+
+Ọmọ ẹni tí a bí sí ilé ìbùkún,
+tí gbogbo ipa ibi kì í lè wọ̀lú bá a.
+
+Ọmọ a gúnlẹ̀ kí ire má bà a lẹ́sẹ̀,
+tó bá wọlé, ayọ̀ á tẹ̀lé e wọlé.
+
+Ọmọ Olofa tí kì í bẹ̀rù ogun ayé,
+tí orí rẹ̀ ń sẹ́gun ní ṣíṣé àti ilosiwaju.
+
+Olamide, ọmọ tí Ọlọ́run fún ní ọlá,
+ní ìlera tí kì í yá,
+ní ayọ̀ tí kì í péjú,
+ní ìbùkún tí kì í sùn.
+
+Ọmọ ìkẹ́yìn tó wú ilé l’ọlá,
+arinrin lojú, ayọ̀ lọ́kàn,
+aláṣẹ, alákàrà, ọmọ tí orí rẹ̀ yóò ṣílẹ̀ sí rere.
+
+Olamide,
+ọmọ Olofa májó — ẹni tí ire kì í lé kiri rẹ.
+        </p>
+
+        <img
+          src="Asset/images/USM 1.JPG"
+          alt="Extra Olamide"
+          class="oriki-photo"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <p class="disclaimer">
+    Disclaimer: The background music used on this page is the property of its
+    rightful owner. This website is a non-commercial personal birthday tribute
+    and does not claim ownership of the song.
+  </p>
+
+  <!-- MUSIC -->
+  <audio id="bg-music" autoplay loop>
+    <source src="Asset/music/SMSG.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- MAIN SCRIPT WITH FIREBASE (MODULE) -->
+  <script type="module">
+    // ========= FIREBASE IMPORTS =========
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      serverTimestamp,
+      query,
+      orderBy,
+      onSnapshot
+    } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDNh1DuBRgUPV22Thr1hBEPy38a4GQ-i6g",
+      authDomain: "usman-birthday-117a1.firebaseapp.com",
+      projectId: "usman-birthday-117a1",
+      storageBucket: "usman-birthday-117a1.firebasestorage.app",
+      messagingSenderId: "664054797056",
+      appId: "1:664054797056:web:1e95e867373acb35ca59e5"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const commentsCol = collection(db, "usman_comments");
+
+    // ========= UI LOGIC: TABS + MUSIC =========
+
+    window.showTab = function (tabId) {
+      document.querySelectorAll(".tab-content").forEach((tab) => {
+        tab.classList.remove("active");
+      });
+      document.getElementById(tabId).classList.add("active");
+
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+      const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+      if (activeBtn) activeBtn.classList.add("active");
+    };
+
+    window.toggleMusic = function () {
+      const music = document.getElementById("bg-music");
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    };
+
+    // ========= COMMENTS (GLOBAL VIA FIRESTORE) =========
+
+    const commentForm = document.getElementById("commentForm");
+    const nameInput = document.getElementById("nameInput");
+    const messageInput = document.getElementById("messageInput");
+    const commentsList = document.getElementById("commentsList");
+
+    function renderComments(docs) {
+      commentsList.innerHTML = "";
+
+      if (!docs.length) {
+        const p = document.createElement("p");
+        p.className = "no-comments";
+        p.textContent = "No messages yet. Be the first to wish him. 🥳";
+        commentsList.appendChild(p);
+        return;
+      }
+
+      docs.forEach((docSnap) => {
+        const data = docSnap.data();
+
+        const card = document.createElement("div");
+        card.className = "comment-card";
+
+        const meta = document.createElement("div");
+        meta.className = "comment-meta";
+
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = data.name || "Anonymous";
+
+        const timeSpan = document.createElement("span");
+        if (data.createdAt?.toDate) {
+          timeSpan.textContent = data.createdAt.toDate().toLocaleString();
+        } else {
+          timeSpan.textContent = "";
+        }
+
+        meta.appendChild(nameSpan);
+        meta.appendChild(timeSpan);
+
+        const text = document.createElement("div");
+        text.className = "comment-text";
+        text.textContent = data.message || "";
+
+        card.appendChild(meta);
+        card.appendChild(text);
+        commentsList.appendChild(card);
+      });
+    }
+
+    // live listener — updates instantly when anyone comments
+    const q = query(commentsCol, orderBy("createdAt", "desc"));
+    onSnapshot(q, (snapshot) => {
+      renderComments(snapshot.docs);
+    });
+
+    commentForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!message) return;
+
+      try {
+        await addDoc(commentsCol, {
+          name: name || "Anonymous",
+          message,
+          createdAt: serverTimestamp()
+        });
+        commentForm.reset();
+      } catch (err) {
+        console.error("Error adding comment:", err);
+        alert("Couldn't post comment. Please try again.");
+      }
+    });
+  </script>
+</body>
+
+</html>
